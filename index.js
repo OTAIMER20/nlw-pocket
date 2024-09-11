@@ -76,6 +76,31 @@ const metasAbertas = async () => {
     })
 }
 
+const apagarMetas = async () => {
+    const metasDesmarcadas = metas.map((meta) => {
+        return { value: meta.value, checked: false }
+    })
+
+    const itensADeletar = await checkbox({
+        message: "Escolha qual item deseja apagar ",
+        choices: [...metasDesmarcadas],
+        instructions: false,
+    })
+
+    if(itensADeletar.length == 0){
+        console.log('Nenhum item foi apagado!')
+        return
+    }
+
+    itensADeletar.forEach((item) => {
+        metas = metas.filter((meta) => {
+            return meta.value != item
+        })
+    })
+
+    console.log('Metas apagadas com sucesso!')
+}
+
 const start = async () => {
     while (true){
         const opcao = await select({
@@ -98,6 +123,10 @@ const start = async () => {
                     value: "abertas"
                 },
                 {
+                    name: "Apagar metas",
+                    value: "apagar"
+                },
+                {
                     name: "Sair",
                     value: "sair"
                 }
@@ -117,6 +146,9 @@ const start = async () => {
                 break;
             case "abertas":
                 await metasAbertas();
+                break;
+            case "apagar":
+                await apagarMetas();
                 break;
             case "sair":
                 return
