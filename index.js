@@ -1,9 +1,10 @@
 /**
 // hello world
-console.log("Hello world!") **/
+console.log("Hello world!") */
 
 //arrays, objects
 
+/**
 let metas = ["mayk", "alo"];
 console.log(metas[0]);
 
@@ -15,4 +16,16 @@ let meta = {
 console.log(meta.value);
 
 //function
-const criarMeta = () => {};
+const criarMeta = () => {}; */
+
+/*
+const start = () => {
+    let count = 1;
+    while (count <= 10){
+        console.log(count);
+        count++;
+    }
+};
+
+start(); */
+
